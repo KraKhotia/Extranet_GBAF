@@ -16,7 +16,7 @@
       if (!$resultat)
       {
           echo '<div class="erreur">Mauvais identifiant ou mot de passe !</div>';
-          include("connexion.php");
+          include("login.php");
           
       }
       else
@@ -32,7 +32,7 @@
           }
           else {
               echo '<div class="erreur">Mauvais identifiant ou mot de passe !</div>';
-              include("connexion.php");
+              include("login.php");
           }
       }  
 ?>

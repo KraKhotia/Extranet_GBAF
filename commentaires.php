@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <title>Extranet GBAF</title>
-    <link href="style.css" rel="stylesheet" />
+    <link href="public/css/style.css" rel="stylesheet" />
     </head>
     
     <body>
@@ -14,6 +14,7 @@
         <p><a href="index.php">Retour à l'index</a></p>
         <?php
             include("bdd.php");
+            
             //on récupère l'ID de l'acteur pour afficher le bon contenu
             $req = $bdd->prepare('SELECT ID, acteur, description FROM acteur WHERE ID = ?'); 
             $req->execute(array($_GET['acteur']));   

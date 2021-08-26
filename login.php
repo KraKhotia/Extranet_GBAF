@@ -6,7 +6,7 @@
     </head>
     <body>
             <h1>Connexion</h1>
-            <form action="check_connexion.php" method="post" class="formulaire">
+            <form action="check_login.php" method="post" class="formulaire">
                 <div class="inline">    
                     <p>
                         <label>UserName</label> <input type="text" name="username" class="input_perso" />
