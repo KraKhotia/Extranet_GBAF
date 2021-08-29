@@ -8,18 +8,19 @@
     
     <body>
         <?php session_start();
-        include("entete.php");
-        if (isset($_SESSION['id']) AND isset($_SESSION['nom']) AND isset($_SESSION['prenom']))
-            {
-              include("acteurs.php");  
-            }
-        else
-            {
-              include("connexion.php");  
-            }
-        ?>
-        
-        
-        
+        include("include/entete.php"); ?>
+        <main>
+            <?php
+            if (isset($_SESSION['id']) AND isset($_SESSION['nom']) AND isset($_SESSION['prenom']))
+                {
+                  include("include/acteurs.php");  
+                }
+            else
+                {
+                  include("include/login.php");  
+                }
+            ?>
+        </main>   
+        <?php include("include/footer.php"); ?>
     </body>
 </html>

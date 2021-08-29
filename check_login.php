@@ -1,6 +1,6 @@
 <?php
-    include("entete.php");
-    include("bdd.php");
+    include("incLude/entete.php");
+    include("database/bdd.php");
     
     $username = htmlspecialchars(trim($_POST['username']));
     
@@ -16,7 +16,7 @@
       if (!$resultat)
       {
           echo '<div class="erreur">Mauvais identifiant ou mot de passe !</div>';
-          include("login.php");
+          include("include/login.php");
           
       }
       else
@@ -32,7 +32,8 @@
           }
           else {
               echo '<div class="erreur">Mauvais identifiant ou mot de passe !</div>';
-              include("login.php");
+              include("include/login.php");
           }
-      }  
+      }
+      include("include/footer.php");
 ?>

@@ -1,31 +1,67 @@
+*
+{
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    display: flex; /* Pour les autres navigateurs (safari ?) */
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 header {
  text-align:center;
  border-bottom: #000 solid 1px;
+ margin-bottom: auto;
+ padding: 2em;
+ 
 }
-
-h1, h3  {
+main {
+    background-image: linear-gradient(#FFF , #e5a0a0);
+    padding-top: 5em;
+    padding-bottom: 5em;
+}
+h1  {
       text-align:center;
         }
 h3 {
-     background-color:darkblue;
-     color:white;
+     color:darkblue;
      font-size:1.1em;
      margin-bottom:0px;
-     padding: 0.4em;
+     padding: 0.3em;
+     padding-top: 0.5em;
     }
     
 #logo { 
         width: 7%;}
 
+.logo_prvw {
+     width: 30%;
+     height: 7em;
+     float: left;
+     margin: 0.4em;
+}
+
+.logo {
+    text-align: center;
+    width: 30%;
+}
+
  .acteur {
-        width:70%;
-        margin:auto;
+    background-color: #fff;
+    border: solid 1px darkred;
+    border-radius: 10px;
+    width: 70%;
+    margin: auto;
+    margin-bottom: 1em;
+    padding: 0.5em;
          }
          
   .acteur p {
-         background-color:#CCCCCC;
           margin-top:0px;
           padding: 1em;
+          padding-bottom: 1.1em;
          }
         
 a {
@@ -35,7 +71,7 @@ a {
          
 .formulaire {
         text-align: center;        
-        width: 70%;
+        width: 95%;
         margin:auto;}
          
 Label {
@@ -55,6 +91,22 @@ Label {
         text-align: center;
 }
 
+.contenant_connexion {
+    margin: 5% auto;
+    padding: 2em;
+    background-color: #fff1f1;
+    width: 80%;
+    border: solid 1px #de9f9f;
+}
+
+.contenant_inscr {
+    margin: 0 auto;
+    padding: 2em;
+    background-color: #fff1f1;
+    width: 80%;
+    border: solid 1px #de9f9f;
+}
+
 .inline_npu {
     display: flex;
     justify-content: space-between;
@@ -63,6 +115,16 @@ Label {
 .inline_npu p {
     width: 32%;
 }
+
+.inline_err {
+    display: flex;
+    justify-content: space-between;
+}
+
+.inline_err p {
+    width: 40%;
+}
+
 .inline {
     display: flex;
     justify-content: space-between;
@@ -72,8 +134,27 @@ Label {
     width: 49%;
 }
 
+.succes {
+   text-align: center;
+   color: green;
+   font-size: 1.3em;
+   font-weight: bold;
+   margin-bottom: -5%;
+}
+
 .erreur {
    text-align: center;
    color: red;
+   font-size: 1em;
    font-weight: bold;
+}
+
+footer {
+   background-color: #e5a0a0;
+   border-top: #000 solid 1px;
+   height: 7em;
+   margin-top: auto;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }

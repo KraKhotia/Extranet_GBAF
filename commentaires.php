@@ -8,22 +8,22 @@
     
     <body>
         <?php session_start();
-        include("entete.php"); ?>
-        
-        <h1>Les acteurs</h1>    
+        include("include/entete.php"); ?>
+            
         <p><a href="index.php">Retour à l'index</a></p>
         <?php
-            include("bdd.php");
+            include("database/bdd.php");
             
             //on récupère l'ID de l'acteur pour afficher le bon contenu
-            $req = $bdd->prepare('SELECT ID, acteur, description FROM acteur WHERE ID = ?'); 
+            $req = $bdd->prepare('SELECT ID, acteur, description, logo FROM actor WHERE ID = ?'); 
             $req->execute(array($_GET['acteur']));   
             $donneesR1 = $req->fetch()   
         ?>
-                <div class="news">
-                    <h3>
+                <div class="acteur">
+                    <img src="public/images/<?php echo $donneesR1['logo']; ?>" alt="logo <?php echo $donneesR1['acteur'] ?>" class="logo" />
+                    <h2>
                         <?php echo htmlspecialchars($donneesR1['acteur']); ?>
-                    </h3>
+                    </h2>
                     <p>
                         <?php echo nl2br(htmlspecialchars($donneesR1['description'])); ?><br />
                     </p>
@@ -38,13 +38,13 @@
                 }
             else //autrement on affiche les commentaires liés à l'acteur
                 {
-                    $req = $bdd->prepare('SELECT ID_user, post, DATE_FORMAT(date_add, \'%d/%m/%Y à %Hh%im%ss\') AS date_add FROM post WHERE ID_acteur = ? ORDER BY date_add'); 
+                    $req = $bdd->prepare('SELECT auteur, commentaire, DATE_FORMAT(date_creation, \'%d/%m/%Y à %Hh%im%ss\') AS date_creation FROM post WHERE ID_actor = ? ORDER BY date_creation'); 
                     $req->execute(array($_GET['acteur']));   
                     while ($donneesR2 = $req->fetch())
                         {
         ?>
-                        <p><strong><?php echo htmlspecialchars($donneesR2['username']); ?></strong> le <?php echo $donneesR2['date_add']; ?></p>
-                        <p><?php echo nl2br(htmlspecialchars($donneesR2['post'])); ?></p>
+                        <p><strong><?php echo htmlspecialchars($donneesR2['auteur']); ?></strong> le <?php echo $donneesR2['date_creation']; ?></p>
+                        <p><?php echo nl2br(htmlspecialchars($donneesR2['commentaire'])); ?></p>
         <?php
                         } // Fin de la boucle des commentaires
                     $req->closeCursor();
@@ -61,7 +61,7 @@
                     <label>Commentaire</label> <input type="text" name="commentaire" id="post" />
                 </p>
                 <p>
-                    <input type="hidden" name="ID_acteur" value="<?php echo $donneesR1['ID']; ?>" /> 
+                    <input type="hidden" name="ID_actor" value="<?php echo $donneesR1['ID']; ?>" /> 
                 </p>
                 <p>
                     <input type="submit" value="Envoyer" />
@@ -69,6 +69,7 @@
             </form>
         <?php
             $req->closeCursor();
+        include("include/footer.php");
         ?>
     </body>
 </html>
