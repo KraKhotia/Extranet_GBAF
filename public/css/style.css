@@ -10,13 +10,52 @@ body {
     min-height: 100vh;
 }
 
+/*---------EN-TETE---------*/
+
 header {
- text-align:center;
- border-bottom: #000 solid 1px;
- margin-bottom: auto;
- padding: 2em;
- 
+    text-align:left;
+    border-bottom: #000 solid 1px;
+    margin-bottom: auto;
+    padding: 2em;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
+
+#logo_header { 
+    width: 7%;}
+
+.avatar {
+    width: 40px;
+    float: left;
+    border-radius: 20px;
+}
+
+.info_profil {
+    width:15%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.info_profil p {   
+    display: flex;
+    align-items: center;
+}
+
+.info_profil a {
+    text-align: center;
+    color: #fff;
+    background-color: #de9f9f;
+    min-width: 8em;
+    padding: 0.3em;
+    margin-top: -0.9em;
+    border-radius: 7px;
+    border: solid 1px #bf7272;
+}
+
+/*--------CORPS/CONTENU DU SITE--------*/
+
 main {
     background-image: linear-gradient(#FFF , #e5a0a0);
     padding-top: 5em;
@@ -32,48 +71,119 @@ h3 {
      padding: 0.3em;
      padding-top: 0.5em;
     }
-    
-#logo { 
-        width: 7%;}
 
-.logo_prvw {
-     width: 30%;
-     height: 7em;
+a {
+    text-decoration: none;
+    color: blue;
+    }
+    
+    /*Acteurs*/
+
+.presentation {
+    width: 55%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.presentation img {
+    border: solid 1px #ccc;
+    width: 100%;
+}
+.liste {
+    columns: 2;
+    column-gap: 8em;
+}
+
+.liste ul {
+    margin: 0;
+    list-style: none; /* Supprime les points de a liste */
+}
+  
+.liste ul li::before {
+    content: "\2022";  /* Ajoute le code CSS des ronds */
+    color: #ea6262;
+    font-size: 1.1em;
+    font-weight: bold;
+    display: inline-block; /* Nécessaire pour ajouter de l'espace entre le point et le texte */
+    width: 1em; 
+    margin-top: -1em;
+  }
+
+.logo_prvw { /*aperçu Logo acteur*/
+     width: 20%;
+     max-height: 6.5em;
      float: left;
      margin: 0.4em;
 }
 
-.logo {
+.logo_acteur { /*Logo dans page acteur*/
     text-align: center;
     width: 30%;
 }
 
- .acteur {
+.acteur {
     background-color: #fff;
     border: solid 1px darkred;
     border-radius: 10px;
-    width: 70%;
+    width: 60%;
     margin: auto;
     margin-bottom: 1em;
     padding: 0.5em;
-         }
+    display: flex;
+    align-items: center;
+    }
          
-  .acteur p {
-          margin-top:0px;
-          padding: 1em;
-          padding-bottom: 1.1em;
-         }
+.acteur p {
+    margin-top: 0px;
+    padding: 0.3em;
+    padding-bottom: 1.1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    }
+         
+.contenu_acteur{
+    text-align: left;
+    width: 75%;
+    }
+
+.contenu_acteur a {
+    text-align: center;
+    color: #bf7272;
+    min-width: 8em;
+    padding: 0.3em;
+    display: block;
+    border-radius: 7px;
+    border: solid 1px #bf7272;
+    }
+
+   /*Formulaires*/  
+
+     
+.contenant_connexion { /*Encadré formulaire connexion*/
+    margin: 5% auto;
+    padding: 2em;
+    background-color: #fff1f1;
+    width: 80%;
+    border: solid 1px #de9f9f;
+    }
         
-a {
-        text-decoration: none;
-        color: blue;
-}
-         
+.contenant_inscr { /*Encadré formulaire inscription*/           
+    margin: 0 auto;
+    padding: 2em;
+    background-color: #fff1f1;
+    width: 80%;
+    border: solid 1px #de9f9f;
+    }
+
 .formulaire {
-        text-align: center;        
-        width: 95%;
-        margin:auto;}
-         
+    text-align: center;        
+    width: 95%;
+    margin:auto;}
+
 Label {
       font-size: 1.1em;
       font-weight: bold;  
@@ -91,22 +201,6 @@ Label {
         text-align: center;
 }
 
-.contenant_connexion {
-    margin: 5% auto;
-    padding: 2em;
-    background-color: #fff1f1;
-    width: 80%;
-    border: solid 1px #de9f9f;
-}
-
-.contenant_inscr {
-    margin: 0 auto;
-    padding: 2em;
-    background-color: #fff1f1;
-    width: 80%;
-    border: solid 1px #de9f9f;
-}
-
 .inline_npu {
     display: flex;
     justify-content: space-between;
@@ -114,15 +208,6 @@ Label {
 
 .inline_npu p {
     width: 32%;
-}
-
-.inline_err {
-    display: flex;
-    justify-content: space-between;
-}
-
-.inline_err p {
-    width: 40%;
 }
 
 .inline {
@@ -134,7 +219,7 @@ Label {
     width: 49%;
 }
 
-.succes {
+.succes {/*Validation du formulaire*/
    text-align: center;
    color: green;
    font-size: 1.3em;
@@ -142,12 +227,14 @@ Label {
    margin-bottom: -5%;
 }
 
-.erreur {
+.erreur { /*Erreur dans le formulaire*/
    text-align: center;
    color: red;
    font-size: 1em;
    font-weight: bold;
 }
+
+/*-------- PIED DE PAGE--------*/
 
 footer {
    background-color: #e5a0a0;

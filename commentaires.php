@@ -20,7 +20,7 @@
             $donneesR1 = $req->fetch()   
         ?>
                 <div class="acteur">
-                    <img src="public/images/<?php echo $donneesR1['logo']; ?>" alt="logo <?php echo $donneesR1['acteur'] ?>" class="logo" />
+                    <img src="public/images/<?php echo $donneesR1['logo']; ?>" alt="logo <?php echo $donneesR1['acteur'] ?>" class="logo_acteur" />
                     <h2>
                         <?php echo htmlspecialchars($donneesR1['acteur']); ?>
                     </h2>

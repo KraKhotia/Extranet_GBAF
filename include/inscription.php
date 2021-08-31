@@ -40,7 +40,7 @@
                 <div class="erreur"><?php if( isset($erreur) && isset($erreur['password']) ){ echo $erreur['password']; } ?></div>
                 <div class="inline">
                     <p>
-                       <label>Question secrète</label> <select name="question[]" class="input_perso">
+                       <label>Question secrète</label> <select name="question" class="input_perso">
                            <option value="1">Qu’est-ce vous vouliez devenir plus grand, lorsque vous étiez enfant ?</option>
                            <option value="2">Quel est le prénom de votre arrière-grand-mère maternelle ?</option>
                            <option value="3">Quel est le nom de votre premier animal de compagnie ?</option>

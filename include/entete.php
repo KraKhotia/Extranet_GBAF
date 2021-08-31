@@ -8,10 +8,14 @@
     
     <body>
         <header>
-            <img src="public/images/logo_gbaf.png" alt="logo gbaf" id="logo" /> <?php 
+            <img src="public/images/logo_gbaf.png" alt="logo gbaf" id="logo_header" /> <?php 
                 if (isset($_SESSION['id']) AND isset($_SESSION['nom']) AND isset($_SESSION['prenom']))
                 {
-                    echo $_SESSION['nom'] . ' ' . $_SESSION['prenom'] . '<br /> <a href="logout.php">Se déconnecter</a>';
+                    echo '<div class="info_profil">
+                            <p><img src="public/images/avatar.png" alt="logo gbaf" class="avatar" />&nbsp;' . $_SESSION['nom'] . ' ' . $_SESSION['prenom'] . '</p>
+                            <a href="index.php">Profil</a><br />
+                            <a href="logout.php">Se déconnecter</a>
+                        </div>';
                     
                 }
                 

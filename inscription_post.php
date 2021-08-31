@@ -24,7 +24,7 @@
                     $rep_question = htmlspecialchars(trim($_POST['rep_question']));
                     
                     //on vérifie que tout les champs sont remplis
-                    if(!empty($_POST['nom']) AND !empty($_POST['prenom']) AND !empty($_POST['username']) AND !empty($_POST['password']) AND !empty($_POST['v_password']) AND !empty($_POST['question']) AND !empty($_POST['rep_question']))
+                    if(!empty($nom) AND !empty($prenom) AND !empty($username) AND !empty($password) AND !empty($v_password) AND !empty($question) AND !empty($rep_question))
                         {
                             $nomlength = strlen($nom);
                             //On vérifie que le nom, prenom et username font moins de 255 caractères
@@ -46,7 +46,7 @@
                                                             if($password == $v_password)
                                                                 {
                                                                     // Hachage du mot de passe
-                                                                    $pass_hache = password_hash(trim($password), PASSWORD_DEFAULT);
+                                                                    $pass_hache = password_hash($password, PASSWORD_DEFAULT);
                                                                     // Effectuer ici la requête qui insère le compte
                                                                     $req = $bdd->prepare('INSERT INTO account(nom, prenom, username, password, question, rep_question, date_inscr) VALUES(:nom, :prenom, :username, :password, :question, :rep_question, CURDATE())');
                                                                     $req->execute(array(
