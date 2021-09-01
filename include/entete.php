@@ -13,7 +13,7 @@
                 {
                     echo '<div class="info_profil">
                             <p><img src="public/images/avatar.png" alt="logo gbaf" class="avatar" />&nbsp;' . $_SESSION['nom'] . ' ' . $_SESSION['prenom'] . '</p>
-                            <a href="index.php">Profil</a><br />
+                            <a href="profil.php">Profil</a><br />
                             <a href="logout.php">Se déconnecter</a>
                         </div>';
                     
