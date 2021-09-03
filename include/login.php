@@ -14,9 +14,9 @@
             else
                 {
                     if(isset($_GET['info']) && $_GET['info'] = "valide")
-                {
-                    echo '<div class="succes">Votre compte a été créé avec succès !</div>';
-                }
+                        {
+                            echo '<div class="succes">Votre compte a été créé avec succès !</div>';
+                        }
          ?>       
                     <div class="contenant_connexion">
                         <h1>Connexion</h1>

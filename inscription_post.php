@@ -27,14 +27,14 @@
                     if(!empty($nom) AND !empty($prenom) AND !empty($username) AND !empty($password) AND !empty($v_password) AND !empty($question) AND !empty($rep_question))
                         {
                             $nomlength = strlen($nom);
-                            //On vérifie que le nom, prenom et username font moins de 255 caractères
-                            if($nomlength <= 255)
+                            //On vérifie que le nom, prenom et username font moins de 50 caractères
+                            if($nomlength <= 50)
                                 {
                                     $prenomlength = strlen($prenom);
-                                    if($prenomlength <= 255)
+                                    if($prenomlength <= 50)
                                         {
                                             $usernamelength = strlen($username);
-                                            if($usernamelength <= 255)
+                                            if($usernamelength <= 50)
                                                 {
                                                     $requsername = $bdd->prepare("SELECT * FROM account WHERE username=?");
                                                     $requsername->execute(array($username));
@@ -47,6 +47,7 @@
                                                                 {
                                                                     // Hachage du mot de passe
                                                                     $pass_hache = password_hash($password, PASSWORD_DEFAULT);
+                                                                    $rep_hache = password_hash($rep_question, PASSWORD_DEFAULT);
                                                                     // Effectuer ici la requête qui insère le compte
                                                                     $req = $bdd->prepare('INSERT INTO account(nom, prenom, username, password, question, rep_question, date_inscr) VALUES(:nom, :prenom, :username, :password, :question, :rep_question, CURDATE())');
                                                                     $req->execute(array(
@@ -55,12 +56,11 @@
                                                                             'username' => $username,
                                                                             'password' => $pass_hache,
                                                                             'question' => $question,
-                                                                            'rep_question' => $rep_question)); 
+                                                                            'rep_question' => $rep_hache)); 
                                                                     // Puis rediriger vers index.php
                                                                     echo "Votre compte a bien été créé!";
                                                                     header('Location: index.php?info=valide');
-                                                                    
-                                     
+                                                                
                                                                 }
                                                             else{
                                                                     $erreur['password'] = "Vos mots de passes ne correspondent pas!";
@@ -71,15 +71,15 @@
                                                         }
                                                 }
                                             else{
-                                                    $erreur['username_length'] = "Votre UserName ne doit pas dépasser 255 caractères";
+                                                    $erreur['username_length'] = "Votre UserName ne doit pas dépasser 50 caractères";
                                                 }
                                         }
                                     else{
-                                            $erreur['prenom'] = "Votre prénom ne doit pas dépasser 255 caractères";
+                                            $erreur['prenom'] = "Votre prénom ne doit pas dépasser 50 caractères";
                                         }     
                                 }
                             else{
-                                    $erreur['nom'] = "Votre nom ne doit pas dépasser 255 caractères";
+                                    $erreur['nom'] = "Votre nom ne doit pas dépasser 50 caractères";
                                 }       
                         }  
                     else
