@@ -77,7 +77,9 @@ a {
     color: blue;
     }
     
-    /*Acteurs*/
+    /*---ACTEURS---*/
+
+    /*Sur Page d'accueil*/
 
 .presentation {
     width: 55%;
@@ -118,12 +120,7 @@ a {
      margin: 0.4em;
 }
 
-.logo_acteur { /*Logo dans page acteur*/
-    text-align: center;
-    width: 30%;
-}
-
-.acteur {
+.acteur_prvw { /* Sur la page d'accueil */
     background-color: #fff;
     border: solid 1px darkred;
     border-radius: 10px;
@@ -134,8 +131,8 @@ a {
     display: flex;
     align-items: center;
     }
-         
-.acteur p {
+
+.acteur_prvw p {
     margin-top: 0px;
     padding: 0.3em;
     padding-bottom: 1.1em;
@@ -143,6 +140,36 @@ a {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    }
+
+    /*Sur page commentaire*/
+
+.logo_acteur { /*Logo dans page acteur*/
+    width: 50%;
+    margin: 1em;
+    margin-bottom: 1.5em;
+}
+
+.acteur {
+    background-color: #fff;
+    border: solid 1px darkred;
+    border-radius: 10px;
+    width: 60%;
+    margin: auto;
+    margin-bottom: 1em;
+    padding: 0.5em;
+    text-align: center;
+    }
+ 
+.acteur h2 {
+    text-align: left;
+}
+
+.acteur p {
+    margin-top: 0px;
+    padding: 0.3em;
+    padding-bottom: 1.1em;
+    text-align: left;
     }
          
 .contenu_acteur{
@@ -160,9 +187,42 @@ a {
     border: solid 1px #bf7272;
     }
 
-   /*Formulaires*/  
+    /* Like|Dislike */
+    .vote {
+        width: 150px;
+        margin: 50px 0;
+        float: right;
+    }
 
-     
+    .vote_btns {
+        margin-top: 10px;
+        text-align: right;
+    }
+
+    .vote_btn {
+        border: none;
+        padding: 0;
+        margin: 0 0 0 10px;
+        display: inline-block;
+        cursor: pointer;
+        background: transparent;
+        transition: color 0.3s;
+    }
+
+    #fa fa-thumbs-up {
+        size: 50px;
+    }
+
+    .vote_like:hover {
+        color: #63b96b;
+    }
+
+    .vote_dislike:hover {
+        color: #f2504b;
+    }
+
+   /*Formulaires*/  
+ 
 .contenant_connexion { /*Encadré formulaire connexion*/
     margin: 5% auto;
     padding: 2em;
@@ -224,7 +284,7 @@ Label {
    color: green;
    font-size: 1.3em;
    font-weight: bold;
-   margin-bottom: -5%;
+   margin-bottom: 1em;
 }
 
 .erreur { /*Erreur dans le formulaire*/

@@ -30,10 +30,22 @@
             $req->closeCursor();
 
             
-            if(isset($_GET['info']) && $_GET['info'] == "valide") { echo '<div class="succes">Modification effectuée !</div>';} 
-            elseif(isset($_GET['info']) && $_GET['info'] == "erreur1") { echo '<div class="erreur">Mauvais.e UserName ou password !</div>';}
-            elseif(isset($_GET['info']) && $_GET['info'] == "erreur2") { echo '<div class="erreur">Mauvais.e password ou réponse !</div>';}
+            if(isset($_GET['info'])) 
+                { switch ($_GET['info'])
+                    {
+                        case "valide":
+                            echo '<div class="succes">Modification effectuée !</div>';
+                        break;
+                        
+                        case "erreur1":
+                            echo '<div class="erreur">Mauvais.e UserName ou password !</div>';
+                        break;
 
+                        case "erreur2":
+                            echo '<div class="erreur">Mauvais.e password ou réponse !</div>';
+                        break;
+                    }
+                }
             ?>   
             <div class="contenant_connexion">
             <h1>Changer de UserName</h1>
@@ -69,7 +81,7 @@
                     <label>Nouveau Password</label> <input type="password" name="nvpassword" class="input_perso" />                    
                 </p>
                 <p>
-                    <input type="submit" name="modifier_pass" value="Modifier" />
+                    <input type="submit" name="modifier_mdp" value="Modifier" />
                 </p>
             </form>
         </div>

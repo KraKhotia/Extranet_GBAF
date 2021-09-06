@@ -33,7 +33,7 @@
     while ($donnees = $reponse->fetch())
         {
 ?>
-    <div class="acteur">
+    <div class="acteur_prvw">
         <img src="public/images/<?php echo $donnees['logo']; ?>" alt="logo <?php echo $donnees['acteur'] ?>" class="logo_prvw" />
             <div class="contenu_acteur">
             <h3>

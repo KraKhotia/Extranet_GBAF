@@ -77,7 +77,7 @@
             $password = htmlspecialchars(trim($_POST['password']));
             $reponse = htmlspecialchars(trim($_POST['rep_question']));
             $nvpass = htmlspecialchars(trim($_POST['nvpassword']));
-
+            
             // Comparaison du mdp et reponse envoyés via le formulaire avec la base
             $isRepCorrect = password_verify($reponse, $resultat['rep_question']);
             $isPasswordCorrect = password_verify($password, $resultat['password']);
