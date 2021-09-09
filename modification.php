@@ -9,7 +9,7 @@
       $req->execute(array(
           'id' => $idsession));
       $resultat = $req->fetch();
-   
+      
       /* MODIFICATION USERNAME */
 
       if (isset($_POST['modifier_user']))

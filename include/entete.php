@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Extranet GBAF</title>
     <link href="public/css/style.css" rel="stylesheet" />
     </head>
@@ -12,9 +13,8 @@
                 if (isset($_SESSION['id']) AND isset($_SESSION['nom']) AND isset($_SESSION['prenom']))
                 {
                     echo '<div class="info_profil">
-                            <p><img src="public/images/avatar.png" alt="logo gbaf" class="avatar" />&nbsp;' . $_SESSION['nom'] . ' ' . $_SESSION['prenom'] . '</p>
-                            <a href="profil.php">Profil</a><br />
-                            <a href="logout.php">Se déconnecter</a>
+                            <p><img src="public/images/avatar.png" alt="logo gbaf" class="avatar" />&nbsp;<a href="profil.php" id="membre">' . $_SESSION['nom'] . ' ' . $_SESSION['prenom'] . '</a></p>
+                            <a href="logout.php" id="logout">Se déconnecter</a>
                         </div>';
                     
                 }

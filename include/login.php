@@ -2,11 +2,13 @@
 <html>
     <head>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Connexion à l'Extranet</title>
+        <link href="public/css/style.css" rel="stylesheet" />
     </head>
     <body>
         <?php
-            if(isset($_GET['id']) && $_GET['id'] = "inscrire")
+            if(isset($_GET['action']) && $_GET['action'] = "inscrire")
                 {
                     include("include/inscription.php");
                 }
@@ -32,9 +34,9 @@
                             <p>
                                 <input type="submit" name="connexion" value="Se connecter" />
                             </p>
-                            <p>
-                                <a href="index.php?id=inscrire">S'inscrire</a>
-                            </p>
+                        </form>
+                        <form action="index.php?action=inscrire" method="post" class="subscribe">
+                            <button type="submit">S'inscrire</button>
                         </form>
                     </div>
         <?php            

@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Inscription à l'Extranet</title>
     </head>
     <body>
@@ -58,7 +59,6 @@
                                                                             'question' => $question,
                                                                             'rep_question' => $rep_hache)); 
                                                                     // Puis rediriger vers index.php
-                                                                    echo "Votre compte a bien été créé!";
                                                                     header('Location: index.php?info=valide');
                                                                 
                                                                 }

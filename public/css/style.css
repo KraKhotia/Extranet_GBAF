@@ -43,11 +43,19 @@ header {
     align-items: center;
 }
 
-.info_profil a {
+#membre {
+    transition: color 0.3s;
+}
+
+#membre:hover {
+    color: #de9f9f;
+}
+
+#logout {
     text-align: center;
     color: #fff;
     background-color: #de9f9f;
-    min-width: 8em;
+    min-width: 6em;
     padding: 0.3em;
     margin-top: -0.9em;
     border-radius: 7px;
@@ -61,11 +69,12 @@ main {
     padding-top: 5em;
     padding-bottom: 5em;
 }
-h1  {
+h1, h2  {
       text-align:center;
-        }
+    }
+
 h3 {
-     color:darkblue;
+     color:darkred;
      font-size:1.1em;
      margin-bottom:0px;
      padding: 0.3em;
@@ -74,9 +83,19 @@ h3 {
 
 a {
     text-decoration: none;
-    color: blue;
+    color: #540404;
     }
+
+.retour {
+    color: #540404;
+    width: 7.3em;
+    margin: 0.5em auto;
+    padding: 0.3em;
+    border-radius: 7px;
+    border: solid 1px #540404;
+    display: block;
     
+}
     /*---ACTEURS---*/
 
     /*Sur Page d'accueil*/
@@ -187,16 +206,74 @@ a {
     border: solid 1px #bf7272;
     }
 
+    /* Commentaires */
+
+    #commentaires {
+        background-color: #fff;
+        border: solid 1px darkred;
+        border-radius: 10px;
+        width: 60%;
+        margin: auto;
+        margin-bottom: 1em;
+        padding: 0.5em;   
+    }
+
+    #commentaires h2 {
+         text-align: left;
+         margin: 0.7em 0.5em;
+    }
+
+    #commentaires form {
+        margin: 0.5em 0.5em;
+    }
+
+    .commentaire {
+        border: solid 1px #bf7272;
+        border-radius: 10px;
+        width: 98%;
+        margin: 0.5em auto;
+        padding: 0.5em;
+    }
+
+    .commentaire p {
+        margin: auto;
+    }
+
+    /* Boutons zone commentaire */
+    .btn_zone_comment {/*contient nouveau commentaire et Like/dislike*/
+        float: right;
+        margin: -4em 0.5em 0 0.5em;
+        display: flex;
+        align-items: center;
+    }
+
+    .nv_comment {/* contient bouton nouveau commentaire*/
+        display: inline-block;
+    }
+
+    .btn_nv_comment {/* Bouton nouveau commentaire*/
+        border: solid 1px #bf7272;
+        border-radius: 10px;
+        padding: 0.5em;
+        background: transparent;
+        margin: 0 0 0 10px;
+        cursor: pointer;
+    }
+
     /* Like|Dislike */
     .vote {
-        width: 150px;
-        margin: 50px 0;
-        float: right;
+        border: solid 1px #bf7272;
+        border-radius: 10px;
+        display: inline-block;
+        margin-left: 0.5em;
+    }
+
+    .vote form {
+        display: inline-block;
     }
 
     .vote_btns {
-        margin-top: 10px;
-        text-align: right;
+        padding-right: 0.5em;
     }
 
     .vote_btn {
@@ -213,12 +290,20 @@ a {
         size: 50px;
     }
 
-    .vote_like:hover {
+    .vote_like:hover, .is-liked {
         color: #63b96b;
     }
 
-    .vote_dislike:hover {
+    .vote_dislike:hover, .is-disliked {
         color: #f2504b;
+    }
+
+    #post {
+        width: 100%;
+        min-height: 9em;
+        border: solid 1px #bf7272;
+        border-radius: 10px;
+        padding: 0.5em;
     }
 
    /*Formulaires*/  
@@ -257,7 +342,7 @@ Label {
         margin-top: 1em;
 }
 
-.input_perso option {
+.input_perso option, .subscribe {
         text-align: center;
 }
 
@@ -292,6 +377,12 @@ Label {
    color: red;
    font-size: 1em;
    font-weight: bold;
+}
+
+.erreur img {
+    border: solid 1px #ccc;
+    width: 50%;
+    margin: 3em;
 }
 
 /*-------- PIED DE PAGE--------*/

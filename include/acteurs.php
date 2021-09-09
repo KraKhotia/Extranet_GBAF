@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Extranet GBAF</title>
     <link href="public/css/style.css" rel="stylesheet" />
     </head>
@@ -28,7 +29,7 @@
 <?php
     include("database/bdd.php");
             
-    $reponse = $bdd->query('SELECT ID, acteur, description, logo FROM actor ORDER BY ID LIMIT 0,5'); 
+    $reponse = $bdd->query('SELECT id, acteur, description, logo FROM actor ORDER BY id LIMIT 0,5'); 
                 
     while ($donnees = $reponse->fetch())
         {
@@ -45,7 +46,7 @@
                 $apercu_contenu = substr($donnees['description'], 0, 125);
                 echo htmlspecialchars($apercu_contenu)
                 ?> (...)
-                <em><a href="commentaires.php?acteur=<?php echo $donnees['ID']; ?>">Lire la suite</a></em>
+                <em><a href="acteur.php?acteur=<?php echo $donnees['id']; ?>">Lire la suite</a></em>
             </p>
             </div>
     </div>
