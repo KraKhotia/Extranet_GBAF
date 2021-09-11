@@ -25,7 +25,7 @@
                 
                 $req = $bdd->prepare('SELECT id, question FROM question WHERE id = :id');
                 $req->execute(array(
-                    'id' => $res_account['question']));
+                    'id' => $req_account['question']));
                 $req_question = $req->fetch();
             
                 $req->closeCursor();
@@ -48,12 +48,12 @@
                         }
                     }
                 ?>
-                <h1>Modification des données personnelles</h1>   
+                <h1>Paramètres du compte</h1>   
                 <div class="contenant_connexion">
                 <h2>Changer de UserName</h2>
-                <form action="modification.php" method="post" class="formulaire">
+                <form action="backend/modification.php" method="post" class="formulaire">
                     <p>
-                        <label>UserName</label> <input type="text" name="username" class="input_perso" value="<?php echo $req_account['username']; ?>" />
+                        <strong>UserName actuel</strong><br /><br /> <?php echo $req_account['username']; ?>
                     </p>
                     <p>
                         <label>Nouveau UserName</label> <input type="text" name="nvusername" class="input_perso" />
@@ -72,12 +72,12 @@
             </div>
                 <div class="contenant_connexion">
                 <h2>Changer de Password</h2>
-                <form action="modification.php" method="post" class="formulaire">
+                <form action="backend/modification.php" method="post" class="formulaire">
                     <p>
                         <label><?php echo $req_question['question']; ?></label> <input type="text" name="rep_question" class="input_perso" />
                     </p>
                     <p>
-                        <label>Password</label> <input type="password" name="password" class="input_perso" />
+                        <label>Password actuel</label> <input type="password" name="password" class="input_perso" />
                     </p>
                     <p>
                         <label>Nouveau Password</label> <input type="password" name="nvpassword" class="input_perso" />                    

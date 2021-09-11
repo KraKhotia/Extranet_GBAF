@@ -7,8 +7,8 @@
     </head>
     <body>
     <?php
-        include("include/entete.php");
-        include("database/bdd.php"); 
+        include("../include/entete.php");
+        include("../database/bdd.php"); 
     ?>
         <main>
         <?php
@@ -59,7 +59,7 @@
                                                                             'question' => $question,
                                                                             'rep_question' => $rep_hache)); 
                                                                     // Puis rediriger vers index.php
-                                                                    header('Location: index.php?info=valide');
+                                                                    header('Location: ../index.php?info=valide');
                                                                 
                                                                 }
                                                             else{
@@ -90,12 +90,12 @@
                 
             if(!empty($erreur))
                 {
-                    include("include/inscription.php");
+                    include("../include/inscription.php");
                 }
         ?>
         </main>
     <?php    
-        include("include/footer.php");
+        include("../include/footer.php");
     ?>
     </body>
 </html>

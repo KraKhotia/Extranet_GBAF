@@ -10,8 +10,8 @@
     <body>
         <main>
             <?php
-                include("incLude/entete.php");
-                include("database/bdd.php");
+                include("../include/entete.php");
+                include("../database/bdd.php");
                 
                 $username = htmlspecialchars(trim($_POST['username']));
                 
@@ -27,7 +27,7 @@
                 if (!$resultat)
                 {
                     echo '<div class="erreur">Mauvais identifiant ou mot de passe !</div>';
-                    include("include/login.php");
+                    include("../include/login.php");
                     
                 }
                 else
@@ -39,15 +39,15 @@
                         $_SESSION['nom'] = $resultat['nom'];
                         $_SESSION['prenom'] = $resultat['prenom'];
                         echo 'Vous êtes connecté !';
-                        header('Location: index.php');
+                        header('Location: ../index.php');
                     }
                     else {
                         echo '<div class="erreur">Mauvais identifiant ou mot de passe !</div>';
-                        include("include/login.php");
+                        include("../include/login.php");
                     }
                 }
             ?>
         </main>
-        <?php include("include/footer.php"); ?>
+        <?php include("../include/footer.php"); ?>
     </body>
 </html>

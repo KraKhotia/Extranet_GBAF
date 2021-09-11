@@ -22,7 +22,7 @@
          ?>       
                     <div class="contenant_connexion">
                         <h1>Connexion</h1>
-                        <form action="check_login.php" method="post" class="formulaire">
+                        <form action="backend/check_login.php" method="post" class="formulaire">
                             <div class="inline">    
                                 <p>
                                     <label>UserName</label> <input type="text" name="username" class="input_perso" />

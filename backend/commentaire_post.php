@@ -1,5 +1,5 @@
 <?php
-    include("database/bdd.php");
+    include("../database/bdd.php");
     
     session_start();
     // Effectuer ici la requête qui insère le message
@@ -7,5 +7,5 @@
     $req->execute(array($_POST['id_actor'],$_SESSION['prenom'],$_POST['commentaire']));
     // Puis rediriger vers commentaires.php 
 
-    header('Location: acteur.php?acteur=' . $_POST['id_actor'] . '');
+    header('Location: ../acteur.php?acteur=' . $_POST['id_actor'] . '');
 ?>

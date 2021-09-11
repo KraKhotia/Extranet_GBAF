@@ -16,7 +16,7 @@
 
             <div class="contenant_inscr">
                 <h1>Inscription</h1>
-                <form action="inscription_post.php" method="post" class="formulaire">
+                <form action="backend/inscription_post.php" method="post" class="formulaire">
                     <div class="inline_npu">
                         <p>
                             <label>Nom</label> <input type="text" name="nom" value="<?php echo (isset($_POST['nom'])?$_POST['nom']:''); ?>" class="input_perso" />

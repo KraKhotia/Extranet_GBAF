@@ -6,6 +6,7 @@
         <title>Extranet GBAF</title>
     <link href="public/css/style.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/d30df02282.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="public/js/textarea.js"></script>
     </head>
     
     <body>
@@ -59,10 +60,10 @@
                         </div>
                         <div class="vote">
                                 <div class="vote_btns">
-                                    <form action="vote.php?id_actor=<?php echo $donneesR1['id'];?>" method="POST">
+                                    <form action="backend/vote.php?id_actor=<?php echo $donneesR1['id'];?>" method="POST">
                                         <button type="submit" class="vote_btn vote_like" name="vote_like"><i class="fa fa-thumbs-up fa-2x"></i> <?php echo $like_count ?></button>
                                     </form>
-                                    <form action="vote.php?id_actor=<?php echo $donneesR1['id'];?>" method="POST">
+                                    <form action="backend/vote.php?id_actor=<?php echo $donneesR1['id'];?>" method="POST">
                                         <button type="submit" class="vote_btn vote_dislike" name="vote_dislike"><i class="fa fa-thumbs-down fa-2x"></i> <?php echo $dislike_count ?></button>
                                     </form>
                                 </div>
@@ -72,12 +73,12 @@
                         if (isset($_POST['btn_nv_comment'])) 
                         {
                 ?>
-                            <form action="commentaire_post.php" method="post">
+                            <form action="backend/commentaire_post.php" method="post">
                                 <p>
                                     <strong>Prénom :</strong> <?php echo (isset($_SESSION['prenom'])?$_SESSION['prenom']:''); ?>
                                 </p>
                                 <p>
-                                    <label>Commentaire</label><br /> <textarea type="text" cols="40" rows="5" name="commentaire" id="post">Rédigez votre commentaire ici</textarea>
+                                    <label>Commentaire</label><br /> <textarea type="text" cols="40" rows="5" name="commentaire" id="post" onblur="javascript:msg_textarea()" onfocus="javascript:clean_textarea()"></textarea>
                                 </p>
                                 <p>
                                     <input type="hidden" name="id_actor" value="<?php echo $donneesR1['id']; ?>" /> 
@@ -91,11 +92,11 @@
                         
                         if (empty($donneesR1)) //Si la recherche ne donne rien
                             {
-                                echo 'Cet acteur n\'existe pas';
+                                echo '<div class="erreur">Ce partenaire n\'existe pas !<br /><a href="index.php" class="retour">Retour à l\'index</a>';
                             }
                         else //autrement on affiche les commentaires liés à l'acteur
                             {
-                                $req = $bdd->prepare('SELECT auteur, commentaire, DATE_FORMAT(date_creation, \'%d/%m/%Y\') AS date_creation FROM post WHERE id_actor = ? ORDER BY date_creation'); 
+                                $req = $bdd->prepare('SELECT auteur, commentaire, DATE_FORMAT(date_creation, \'%d/%m/%Y\') AS date_creation FROM post WHERE id_actor = ? ORDER BY date_creation DESC'); 
                                 $req->execute(array($_GET['acteur']));   
                                 while ($donneesR2 = $req->fetch())
                                     {

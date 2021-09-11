@@ -70,7 +70,7 @@ main {
     padding-bottom: 5em;
 }
 h1, h2  {
-      text-align:center;
+    text-align:center;
     }
 
 h3 {
@@ -181,6 +181,7 @@ a {
     }
  
 .acteur h2 {
+    color:darkred;
     text-align: left;
 }
 
@@ -224,7 +225,7 @@ a {
     }
 
     #commentaires form {
-        margin: 0.5em 0.5em;
+        margin: 0.5em 0.3em;
     }
 
     .commentaire {
@@ -306,6 +307,12 @@ a {
         padding: 0.5em;
     }
 
+    #post:focus { 
+        outline: none !important;
+        border-color: #bf7272;
+        box-shadow: 0 0 10px #bf7272;
+    }
+
    /*Formulaires*/  
  
 .contenant_connexion { /*Encadré formulaire connexion*/
@@ -328,6 +335,10 @@ a {
     text-align: center;        
     width: 95%;
     margin:auto;}
+
+.formulaire strong {
+    font-size: 1.1em;
+}
 
 Label {
       font-size: 1.1em;
@@ -395,4 +406,181 @@ footer {
    display: flex;
    align-items: center;
    justify-content: center;
+}
+
+@media only screen and (min-width: 768px) and  (max-width: 1024px) {
+    /* tablettes */
+    #logo_header {
+        width: 15%;
+    }
+
+    .info_profil {
+        width: 25%;
+    }
+    
+    /*---ACTEURS---*/
+
+    /*Sur Page d'accueil*/
+
+    .presentation {
+        width: 85%;
+    }
+
+    .liste {
+        column-gap: 3em;
+    }
+
+    .logo_prvw {
+        width: 30%;
+    }
+
+    .acteur_prvw {
+        width: 90%;
+    }
+
+    .acteur_prvw p {
+        flex-direction: column;
+    }
+
+    .acteur {
+        width: 90%;
+        }
+
+    /* Sur commentaires*/
+    #commentaires {
+        width: 90%;      
+    }
+
+    .erreur img {
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    /* smartphone */
+        #logo_header {
+            width: 15%;
+        }
+
+        .info_profil {
+            width: 30%;
+        }
+
+    /*---ACTEURS---*/
+
+    /*Sur Page d'accueil*/
+
+        .presentation {
+            width: 85%;
+        }
+
+        .liste {
+            column-gap: 3em;
+        }
+
+        .logo_prvw {
+            width: 40%;
+        }
+
+        .acteur_prvw {
+            width: 90%;
+        }
+
+        .acteur_prvw p {
+            flex-direction: column;
+        }
+
+        .acteur {
+            width: 90%;
+            }
+
+        .logo_acteur {
+            width: 70%;
+            margin: 1em;
+            margin-bottom: 0em;
+            }
+
+        #commentaires {
+            width: 90%;      
+        }
+
+        .erreur img {
+            width: 70%;
+        }
+
+        /* Formulaire*/
+
+        .inline_npu {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+        }
+        
+        .inline_npu p {
+            width: 100%;
+        }
+
+        .inline {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+        }
+        
+        .inline p {
+            width: 100%;
+        }
+}
+
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+    /* smartphone en mode portait */
+    #logo_header {
+        width: 30%;
+    }
+
+    .info_profil {
+        width: 50%;
+    }
+
+    /*---ACTEURS---*/
+
+    /*Sur Page d'accueil*/
+
+    .liste {
+        columns: 1;
+        margin: 0 0 0 -2.5em;
+    }
+
+    /* Sur page acteur */
+    .logo_acteur {
+        width: 80%;
+        margin: 1em;
+        margin-bottom: 0em;
+    }
+
+    /* Like|Dislike */
+        .vote {
+            width:50%;
+            margin: 0.3em;
+        }
+        .vote_btns {
+            text-align: center;
+            padding-right: 0;
+        }
+        .btn_zone_comment {
+            float: none;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nv_comment {
+            width: 50%;
+        }
+
+        .btn_nv_comment {/* Bouton nouveau commentaire*/
+            width: 100%;
+            margin: auto;
+        }
+
 }

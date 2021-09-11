@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include("database/bdd.php");
+    include('../database/bdd.php');
     
     $idsession = $_SESSION['id'];
     
@@ -45,26 +45,26 @@
                                     'nvuser' => $nvusername,
                                     'id' => $resultat['id']
                                     ));
-                                    header('Location: profil.php?info=valide'); //affiche un message de réussite
+                                    header('Location: /profil.php?info=valide'); //affiche un message de réussite
                                  } 
                               else 
                                  {//si mdp non identique, affiche une erreur
-                                    header('Location: profil.php?info=erreur1');
+                                    header('Location: /profil.php?info=erreur1');
                                  }
                            }
                         else 
                            {//si username trop long  
-                              header('Location: profil.php?info=erreur');
+                              header('Location: /profil.php?info=erreur');
                            }
                      }
                   else 
                      {//si username déjà existant, affiche une erreur
-                        header('Location: profil.php?info=erreur3');
+                        header('Location: /profil.php?info=erreur3');
                      }         
                }
             else
                {//si username non identique, affiche une erreur
-                  header('Location: profil.php?info=erreur1');
+                  header('Location: /profil.php?info=erreur1');
                }
          }
 
@@ -94,16 +94,16 @@
                   'nvpass' => $pass_hache,
                   'id' => $resultat['id']
                   ));
-                  header('Location: profil.php?info=valide'); //affiche un message de réussite
+                  header('Location: /profil.php?info=valide'); //affiche un message de réussite
                } 
                else 
                {//si mdp non identique, affiche une erreur
-                  header('Location: profil.php?info=erreur2');
+                  header('Location: /profil.php?info=erreur2');
                }          
             }
             else
             {//si reponse non identique, affiche une erreur
-               header('Location: profil.php?info=erreur2');
+               header('Location: /profil.php?info=erreur2');
             }
          }
 ?>
