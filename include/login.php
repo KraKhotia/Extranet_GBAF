@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Connexion à l'Extranet</title>
-        <link href="public/css/style.css" rel="stylesheet" />
+        <link href="../public/css/style.css" rel="stylesheet" />
     </head>
     <body>
         <?php
@@ -22,7 +22,7 @@
          ?>       
                     <div class="contenant_connexion">
                         <h1>Connexion</h1>
-                        <form action="backend/check_login.php" method="post" class="formulaire">
+                        <form action="../backend/check_login.php" method="post" class="formulaire">
                             <div class="inline">    
                                 <p>
                                     <label>UserName</label> <input type="text" name="username" class="input_perso" />
@@ -35,7 +35,11 @@
                                 <input type="submit" name="connexion" value="Se connecter" />
                             </p>
                         </form>
-                        <form action="index.php?action=inscrire" method="post" class="subscribe">
+                            <p class="oublie">
+                                <a href="../mot_de_passe_oublie.php">Mot de passe oublié</button>
+                            </p>
+                        
+                        <form action="../index.php?action=inscrire" method="post" class="subscribe">
                             <button type="submit">S'inscrire</button>
                         </form>
                     </div>

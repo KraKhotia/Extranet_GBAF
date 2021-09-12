@@ -4,19 +4,19 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Inscription à l'Extranet</title>
-        <link href="public/css/style.css" rel="stylesheet" />
+        <link href="../public/css/style.css" rel="stylesheet" />
     </head>
     <body>        
         <?php
             if($_SERVER['REQUEST_METHOD'] != 'POST') 
                 {
-                    header('Location:http://extranetgbaf/index.php?info=erreur');
+                    header('Location:../index.php?info=erreur');
                 } 
         ?>
 
             <div class="contenant_inscr">
                 <h1>Inscription</h1>
-                <form action="backend/inscription_post.php" method="post" class="formulaire">
+                <form action="../backend/inscription_post.php" method="post" class="formulaire">
                     <div class="inline_npu">
                         <p>
                             <label>Nom</label> <input type="text" name="nom" value="<?php echo (isset($_POST['nom'])?$_POST['nom']:''); ?>" class="input_perso" />
@@ -29,10 +29,13 @@
                         </p>
                     </div>
                         <p>
-                            <?php if( isset($erreur) && isset($erreur['nom']) ){ echo '<div class="erreur">' . $erreur['nom'] . '</div>'; } ?>
+                            <?php if( isset($erreur) && isset($erreur['nom']) ){ echo '<div class="erreur">' . $erreur['nom'] . '</div>'; }
+                            elseif( isset($erreur) && isset($erreur['caract_n']) ){ echo '<div class="erreur">' . $erreur['caract_n'] . '</div>'; } 
+                            ?>
                         </p>
                         <p>
-                            <?php if( isset($erreur) && isset($erreur['prenom']) ){ echo '<div class="erreur">' . $erreur['prenom'] . '</div>'; } ?>
+                            <?php if( isset($erreur) && isset($erreur['prenom']) ){ echo '<div class="erreur">' . $erreur['prenom'] . '</div>'; } 
+                            elseif( isset($erreur) && isset($erreur['caract_p']) ){ echo '<div class="erreur">' . $erreur['caract_p'] . '</div>'; }?>
                         </p>
                         <p>
                         <?php if( isset($erreur) && isset($erreur['username']) ){ echo '<div class="erreur">' . $erreur['username'] . '</div>'; }
@@ -67,7 +70,7 @@
                         <input type="submit" name="inscription" value="S'inscrire" />
                     </p>
                     <p>
-                        <a href="index.php">Retour</a>
+                        <a href="../index.php">Retour</a>
                     </p>
                 </form>
             </div>
