@@ -40,11 +40,13 @@
                 <?php
                      
                      //on récupère le nombre de like et de dislike
-                     $req = $bdd->query('SELECT * FROM v_like');    
+                     $req = $bdd->prepare('SELECT * FROM v_like WHERE id_actor=:id_actor');
+                     $req->execute(array('id_actor' => $_GET['acteur']));    
                      $like_count = $req->rowCount();
                      $req->closeCursor();
 
-                     $req = $bdd->query('SELECT * FROM v_dislike');    
+                     $req = $bdd->prepare('SELECT * FROM v_dislike WHERE id_actor=:id_actor');
+                     $req->execute(array('id_actor' => $_GET['acteur']));    
                      $dislike_count = $req->rowCount();
                      $req->closeCursor();
                 
