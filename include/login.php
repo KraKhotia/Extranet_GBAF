@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Connexion à l'Extranet</title>
-        <link href="../public/css/style.css" rel="stylesheet" />
-    </head>
-    <body>
-        <?php
+<?php
             if(isset($_GET['action']) && $_GET['action'] = "inscrire")
                 {
                     include("include/inscription.php");
@@ -36,7 +27,7 @@
                             </p>
                         </form>
                             <p class="oublie">
-                                <a href="../mot_de_passe_oublie.php">Mot de passe oublié</button>
+                                <a href="../mot_de_passe_oublie.php">Mot de passe oublié</a>
                             </p>
                         
                         <form action="../index.php?action=inscrire" method="post" class="subscribe">
@@ -45,6 +36,4 @@
                     </div>
         <?php            
                 }
-        ?>    
-    </body>
-</html>
+        ?>

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Extranet GBAF</title>
     <link href="public/css/style.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/d30df02282.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="public/js/textarea.js"></script>
+    <script src="public/js/textarea.js"></script>
     </head>
     
     <body>
@@ -20,10 +20,12 @@
 
                 <?php
                     include("database/bdd.php");
-                        
+                    
+                    $id_actor = (int) htmlspecialchars($_GET['acteur']);
+
                     //on récupère l'ID de l'acteur pour afficher le bon contenu
                     $req = $bdd->prepare('SELECT id, acteur, description, logo FROM actor WHERE id=?'); 
-                    $req->execute(array($_GET['acteur']));   
+                    $req->execute(array($id_actor));   
                     $donneesR1 = $req->fetch();  
                     $req->closeCursor(); 
             ?>
@@ -39,16 +41,29 @@
                     </div>
                 <?php
                      
-                     //on récupère le nombre de like et de dislike
-                     $req = $bdd->prepare('SELECT * FROM v_like WHERE id_actor=:id_actor');
-                     $req->execute(array('id_actor' => $_GET['acteur']));    
-                     $like_count = $req->rowCount();
-                     $req->closeCursor();
+                    //on récupère le nombre de like et de dislike
+                    $req = $bdd->prepare('SELECT * FROM v_like WHERE id_actor=:id_actor');
+                    $req->execute(array('id_actor' => $id_actor));    
+                    $like_count = $req->rowCount();
+                    $req->closeCursor();
 
-                     $req = $bdd->prepare('SELECT * FROM v_dislike WHERE id_actor=:id_actor');
-                     $req->execute(array('id_actor' => $_GET['acteur']));    
-                     $dislike_count = $req->rowCount();
-                     $req->closeCursor();
+                    $req = $bdd->prepare('SELECT * FROM v_dislike WHERE id_actor=:id_actor');
+                    $req->execute(array('id_actor' => $id_actor));    
+                    $dislike_count = $req->rowCount();
+                    $req->closeCursor();
+
+                    //on vérifie si l'utilisateur a voté pour cet acteur
+                    $req_like = $bdd->prepare("SELECT id FROM v_like WHERE id_account=:id_session AND id_actor=:id_actor");
+                    $req_like->execute(array(
+                        'id_session' => $_SESSION['id'],
+                        'id_actor' => $id_actor));
+                    $like_exist = $req_like->rowCount();
+
+                    $req_dislike = $bdd->prepare("SELECT id FROM v_dislike WHERE id_account=:id_session AND id_actor=:id_actor");
+                    $req_dislike->execute(array(
+                        'id_session' => $_SESSION['id'],
+                        'id_actor' => $id_actor));
+                    $dislike_exist = $req_dislike->rowCount();
                 
                 ?>      
 
@@ -63,10 +78,12 @@
                         <div class="vote">
                                 <div class="vote_btns">
                                     <form action="backend/vote.php?id_actor=<?php echo $donneesR1['id'];?>" method="POST">
-                                        <button type="submit" class="vote_btn vote_like" name="vote_like"><i class="fa fa-thumbs-up fa-2x"></i> <?php echo $like_count ?></button>
+                                        <button type="submit" class="vote_btn vote_like <?php if($like_exist == 1){echo 'is-liked';}?>" name="vote_like">
+                                            <i class="fa fa-thumbs-up fa-2x"></i> <?php echo $like_count ?>
+                                        </button>
                                     </form>
                                     <form action="backend/vote.php?id_actor=<?php echo $donneesR1['id'];?>" method="POST">
-                                        <button type="submit" class="vote_btn vote_dislike" name="vote_dislike"><i class="fa fa-thumbs-down fa-2x"></i> <?php echo $dislike_count ?></button>
+                                        <button type="submit" class="vote_btn vote_dislike <?php if($dislike_exist == 1){echo 'is-disliked';}?>" name="vote_dislike"><i class="fa fa-thumbs-down fa-2x"></i> <?php echo $dislike_count ?></button>
                                     </form>
                                 </div>
                         </div>
