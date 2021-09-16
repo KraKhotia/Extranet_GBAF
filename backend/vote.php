@@ -7,7 +7,7 @@
         http_response_code(403);
         die();
     }   
-    
+    //Compte le nombre de like et de dislike pour l'utilisateur connecté sur l'article ciblé
     $id_actor = (int) htmlspecialchars($_GET['id_actor']);
     $req_like = $bdd->prepare("SELECT id FROM v_like WHERE id_account=:id_session AND id_actor=:id_actor");
     $req_like->execute(array(

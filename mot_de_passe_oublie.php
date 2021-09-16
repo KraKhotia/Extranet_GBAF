@@ -72,11 +72,13 @@
                                         </form> 
                                 <?php
                                     }
-                                else{//si username non existant, affiche une erreur
+                                else
+                                    {//si username non existant, affiche une erreur
                                         header('Location: ../mot_de_passe_oublie.php?info=erreur1');
                                     }
                             }
-                        else{?>
+                        else
+                            {?>
                                 <form action="../mot_de_passe_oublie.php" method="post" class="formulaire">
                                     <p>
                                         <label>UserName</label> <input type="text" name="username" class="input_perso" />
@@ -84,7 +86,7 @@
                                         <input type="submit" name="identifier" value="S'identifier" />
                                     </p>
                                 </form>
-                        <?php    
+                            <?php    
                             }
 
                             if(isset($_POST['modif_mdp_oublie']))

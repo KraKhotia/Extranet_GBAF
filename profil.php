@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,9 +14,10 @@
         ?>
         <main>   
             <a href="index.php" class="retour">Retour à l'index</a>
+            <h1>Paramètres du compte</h1>
             <?php
                 include("database/bdd.php");
-                $req = $bdd->prepare('SELECT id, username, question FROM account WHERE id = :id');
+                $req = $bdd->prepare('SELECT id, nom, prenom, username, question FROM account WHERE id = :id');
                 $req->execute(array(
                     'id' => $idsession));
                 $req_account = $req->fetch();
@@ -31,63 +32,95 @@
                 $req->closeCursor();
 
                 
-                if(isset($_GET['info'])) 
+                if(isset($_GET['info'])) //Recherche de message de validation ou d'erreur à afficher avant les formulaires
                     { switch ($_GET['info'])
                         {
                             case "valide":
-                                echo '<div class="succes">Modification effectuée !</div>';
+                                echo '<div class="succes">Modification.s effectuée.s !</div>';
                             break;
                             
-                            case "erreur1":
-                                echo '<div class="erreur">Mauvais.e UserName ou password !</div>';
+                            case "erreur":
+                                echo '<div class="erreur">Mauvais.e password ou réponse !</div>';
                             break;
 
-                            case "erreur2":
-                                echo '<div class="erreur">Mauvais.e password ou réponse !</div>';
+                            case "erreur3":
+                                echo '<div class="erreur">Mauvais password !</div>';
+                            break;
+
+                            case "erreur7":
+                                echo '<div class="erreur">Tous les champs doivent être remplis !</div>';
                             break;
                         }
                     }
-                ?>
-                <h1>Paramètres du compte</h1>   
+                ?>                   
                 <div class="contenant_connexion">
-                <h2>Changer de UserName</h2>
-                <form action="backend/modification.php" method="post" class="formulaire">
-                    <p>
-                        <strong>UserName actuel</strong><br /><br /> <?php echo $req_account['username']; ?>
-                    </p>
-                    <p>
-                        <label>Nouveau UserName</label> <input type="text" name="nvusername" class="input_perso" />
-                    </p>
-                    <?php 
-                        if(isset($_GET['info']) && $_GET['info'] == "erreur") { echo '<div class="erreur">UserName trop long ! (Max 50 caractères)</div>';} 
-                        elseif(isset($_GET['info']) && $_GET['info'] == "erreur3") { echo '<div class="erreur">UserName dejà utilisé !</div>';}
-                    ?>
-                    <p>
-                        <label>Password</label> <input type="password" name="password" class="input_perso" />                    
-                    </p>
-                    <p>
-                        <input type="submit" name="modifier_user" value="Modifier" />
-                    </p>
-                </form>
-            </div>
+                    <h2>Modifier ses informations personnelles</h2>
+                    <form action="backend/modification.php" method="post" class="formulaire">
+                        <div class="inline_npu">
+                            <p>
+                                <label>Nom</label> <input type="text" name="nom" value="<?php echo ($req_account['nom']); ?>" class="input_perso" />
+                            </p>
+                            <p>
+                                <label>Prénom</label> <input type="text" name="prenom" value="<?php echo ($req_account['prenom']); ?>" class="input_perso" />
+                            </p>
+                            <p>
+                            <label>UserName</label> <input type="text" name="username" value="<?php echo ($req_account['username']); ?>" class="input_perso" />
+                            </p>
+                        </div>    
+                        <?php 
+                            if(isset($_GET['info'])) //recherche d'erreur de saisie des info personnelles
+                                { switch ($_GET['info'])
+                                    {
+                                        case "erreur1":
+                                            echo '<div class="erreur">UserName dejà utilisé !</div>';
+                                        break;
+                                            
+                                        case "erreur2":
+                                            echo '<div class="erreur">UserName trop long ! (Max 50 caractères)</div>';
+                                        break;
+
+                                        case "erreur4":
+                                            echo '<div class="erreur">Prénom trop long ! (Max 50 caractères)</div>';
+                                        break;
+                                        
+                                        case "erreur5":
+                                            echo '<div class="erreur">Nom trop long ! (Max 50 caractères)</div>';
+                                        break;
+
+                                        case "erreur6":
+                                            echo '<div class="erreur">Présence de caractères spéciaux et/ou chiffre dans Nom et/ou Prénom </div>';
+                                        break;
+                
+                                    } 
+                                }
+                        ?>
+                        <p>
+                            <label>Password</label> <input type="password" name="password" class="input_perso" />                    
+                        </p>
+                        <p>
+                            <input type="submit" name="modifier_user" value="Modifier" />
+                        </p>
+                    </form>
+                </div>
+
                 <div class="contenant_connexion">
-                <h2>Changer de Password</h2>
-                <form action="backend/modification.php" method="post" class="formulaire">
-                    <p>
-                        <label><?php echo $req_question['question']; ?></label> <input type="text" name="rep_question" class="input_perso" />
-                    </p>
-                    <p>
-                        <label>Password actuel</label> <input type="password" name="password" class="input_perso" />
-                    </p>
-                    <p>
-                        <label>Nouveau Password</label> <input type="password" name="nvpassword" class="input_perso" />                    
-                    </p>
-                    <p>
-                        <input type="submit" name="modifier_mdp" value="Modifier" />
-                    </p>
-                </form>
-            </div>
-            <a href="index.php" class="retour">Retour à l'index</a>
+                    <h2>Changer de Password</h2>
+                    <form action="backend/modification.php" method="post" class="formulaire">
+                        <p>
+                            <label><?php echo $req_question['question']; ?></label> <input type="text" name="rep_question" class="input_perso" />
+                        </p>
+                        <p>
+                            <label>Password actuel</label> <input type="password" name="password" class="input_perso" />
+                        </p>
+                        <p>
+                            <label>Nouveau Password</label> <input type="password" name="nvpassword" class="input_perso" />                    
+                        </p>
+                        <p>
+                            <input type="submit" name="modifier_mdp" value="Modifier" />
+                        </p>
+                    </form>
+                </div>
+                <a href="index.php" class="retour">Retour à l'index</a>
         </main>
         <?php include("include/footer.php"); ?>
     </body>

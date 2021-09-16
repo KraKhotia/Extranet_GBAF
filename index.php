@@ -11,16 +11,16 @@
         <?php session_start();
         include("include/entete.php"); ?>
         <main>
-            <?php
-            if (isset($_SESSION['id']) AND isset($_SESSION['nom']) AND isset($_SESSION['prenom']))
-                {
-                    if(isset($_GET['info']) && $_GET['info'] == "erreur") { echo '<div class="erreur">Vous êtes déjà inscrit !</div>';}
-                    include("include/acteurs.php");  
-                }
-            else
-                {  
-                    include("include/login.php");  
-                }
+            <?php //recherche de la session utilisateur
+                if (isset($_SESSION['id']) AND isset($_SESSION['nom']) AND isset($_SESSION['prenom']))
+                    {//si connecté et utilisateur tente d'accéder à la page inscription.php
+                        if(isset($_GET['info']) && $_GET['info'] == "erreur") { echo '<div class="erreur">Vous êtes déjà inscrit !</div>';}
+                        include("include/acteurs.php");  
+                    }
+                else
+                    {  
+                        include("include/login.php");  
+                    }
             ?>
         </main>   
         <?php include("include/footer.php"); ?>

@@ -11,10 +11,9 @@
             if($_SERVER['REQUEST_METHOD'] != 'POST') 
                 {
                     header('Location:../index.php?info=erreur');
-                } 
-        ?>
+                }?>
 
-            <div class="contenant_inscr">
+            <section class="contenant_inscr">
                 <h1>Inscription</h1>
                 <form action="../backend/inscription_post.php" method="post" class="formulaire">
                     <div class="inline_npu">
@@ -28,19 +27,19 @@
                         <label>UserName</label> <input type="text" name="username" value="<?php echo (isset($_POST['username'])?$_POST['username']:''); ?>" class="input_perso" />
                         </p>
                     </div>
-                        <p>
-                            <?php if( isset($erreur) && isset($erreur['nom']) ){ echo '<div class="erreur">' . $erreur['nom'] . '</div>'; }
-                            elseif( isset($erreur) && isset($erreur['caract_n']) ){ echo '<div class="erreur">' . $erreur['caract_n'] . '</div>'; } 
-                            ?>
-                        </p>
-                        <p>
-                            <?php if( isset($erreur) && isset($erreur['prenom']) ){ echo '<div class="erreur">' . $erreur['prenom'] . '</div>'; } 
-                            elseif( isset($erreur) && isset($erreur['caract_p']) ){ echo '<div class="erreur">' . $erreur['caract_p'] . '</div>'; }?>
-                        </p>
-                        <p>
-                        <?php if( isset($erreur) && isset($erreur['username']) ){ echo '<div class="erreur">' . $erreur['username'] . '</div>'; }
-                        if( isset($erreur) && isset($erreur['username_length']) ){ echo '<div class="erreur">' . $erreur['username_length'] . '</div>'; } ?>
-                        </p>
+                    <p>
+                        <?php if( isset($erreur) && isset($erreur['nom']) ){ echo '<div class="erreur">' . $erreur['nom'] . '</div>'; }
+                        elseif( isset($erreur) && isset($erreur['caract_n']) ){ echo '<div class="erreur">' . $erreur['caract_n'] . '</div>'; } 
+                        ?>
+                    </p>
+                    <p>
+                        <?php if( isset($erreur) && isset($erreur['prenom']) ){ echo '<div class="erreur">' . $erreur['prenom'] . '</div>'; } 
+                        elseif( isset($erreur) && isset($erreur['caract_p']) ){ echo '<div class="erreur">' . $erreur['caract_p'] . '</div>'; }?>
+                    </p>
+                    <p>
+                    <?php if( isset($erreur) && isset($erreur['username']) ){ echo '<div class="erreur">' . $erreur['username'] . '</div>'; }
+                    if( isset($erreur) && isset($erreur['username_length']) ){ echo '<div class="erreur">' . $erreur['username_length'] . '</div>'; } ?>
+                    </p>
                     <div class="inline">   
                         <p>
                             <label>Password</label> <input type="password" name="password" class="input_perso" />
@@ -73,7 +72,6 @@
                         <a href="../index.php">Retour</a>
                     </p>
                 </form>
-            </div>
-        
+            </section>    
     </body>
 </html>

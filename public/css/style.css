@@ -287,10 +287,6 @@ a {
         transition: color 0.3s;
     }
 
-    #fa fa-thumbs-up {
-        size: 50px;
-    }
-
     .vote_like:hover, .is-liked {
         color: #63b96b;
     }
