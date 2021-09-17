@@ -93,10 +93,10 @@ a {
     padding: 0.3em;
     border-radius: 7px;
     border: solid 1px #540404;
-    display: block;
-    
+    display: block;   
 }
-    /*---ACTEURS---*/
+
+/*------- ACTEURS --------*/
 
     /*Sur Page d'accueil*/
 
@@ -161,7 +161,7 @@ a {
     align-items: center;
     }
 
-    /*Sur page commentaire*/
+    /*Sur page détails*/
 
 .logo_acteur { /*Logo dans page acteur*/
     width: 50%;
@@ -207,7 +207,7 @@ a {
     border: solid 1px #bf7272;
     }
 
-    /* Commentaires */
+    /*-------- COMMENTAIRES --------*/
 
     #commentaires {
         background-color: #fff;
@@ -309,7 +309,7 @@ a {
         box-shadow: 0 0 10px #bf7272;
     }
 
-   /*Formulaires*/  
+   /*-------- FORMULAIRES--------*/ 
  
 .contenant_connexion { /*Encadré formulaire connexion*/
     margin: 5% auto;
@@ -403,6 +403,8 @@ footer {
    align-items: center;
    justify-content: center;
 }
+
+/*-------- BREAKPOINTS --------*/
 
 @media only screen and (min-width: 768px) and  (max-width: 1024px) {
     /* tablettes */

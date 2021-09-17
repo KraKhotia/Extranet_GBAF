@@ -1,16 +1,21 @@
 <?php
-    session_start();
-    include('../database/bdd.php');
+   session_start();
+   include('../database/bdd.php');
     
-    $idsession = $_SESSION['id'];
+   if($_SERVER['REQUEST_METHOD'] != 'POST') 
+      {
+         header('Location: ../profil.php');
+      }
+
+   $idsession = $_SESSION['id'];
     
-        //  Récupération des informations de l'utilisateur
-      $req = $bdd->prepare('SELECT id, nom, prenom, username, password, rep_question FROM account WHERE id = :id');
-      $req->execute(array(
-          'id' => $idsession));
-      $result = $req->fetch();
+   //  Récupération des informations de l'utilisateur
+   $req = $bdd->prepare('SELECT id, nom, prenom, username, password, rep_question FROM account WHERE id = :id');
+   $req->execute(array(
+      'id' => $idsession));
+   $result = $req->fetch();
       
-      /* MODIFICATION INFO PERSONNELLES */
+   /* MODIFICATION INFO PERSONNELLES */
 
       if (isset($_POST['modifier_user']))
          {//Définition des variables
@@ -51,6 +56,12 @@
                                                                'prenom' => $prenom,
                                                                'username' => $username,
                                                                'id' => $result['id']));
+
+                                                            //On redéfinit les données de la session
+                                                            $_SESSION['username'] = $username;
+                                                            $_SESSION['nom'] = $nom;
+                                                            $_SESSION['prenom'] = $prenom;
+
                                                             header('Location: /profil.php?info=valide'); //affiche un message de réussite
                                                          }
                                                       else 
@@ -67,7 +78,13 @@
                                                                      'prenom' => $prenom,
                                                                      'username' => $username,
                                                                      'id' => $result['id']));
-                                                                  header('Location: /profil.php?info=valide'); //affiche un message de réussite
+
+                                                                  //On redéfinit les données de la session
+                                                                  $_SESSION['username'] = $username;
+                                                                  $_SESSION['nom'] = $nom;
+                                                                  $_SESSION['prenom'] = $prenom;
+
+                                                                  header('Location: /profil.php?info=valide');
                                                                }
                                                             else 
                                                                {//si username déjà existant, affiche une erreur

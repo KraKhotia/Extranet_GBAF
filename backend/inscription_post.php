@@ -13,6 +13,11 @@
     ?>
         <main>
         <?php
+            if($_SERVER['REQUEST_METHOD'] != 'POST') 
+                {
+                    header('Location: ../index.php');
+                }
+
             $erreur = array();
             if(isset($_POST['inscription']))
                 {

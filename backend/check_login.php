@@ -10,6 +10,11 @@
     <body>
         <main>
             <?php
+                if($_SERVER['REQUEST_METHOD'] != 'POST') 
+                    {
+                        header('Location: ../index.php');
+                    }
+
                 include("../include/entete.php");
                 include("../database/bdd.php");
                 
